@@ -1,16 +1,17 @@
-/*  
-    Uses express, dbcon for database connection, body parser to parse form data 
-    handlebars for HTML templates  
-*/
+// main.js
+//
+// Description:     This is the back-end file which controlls the main entry point
+//					of the Farm2U backend
+// ..................................................................................
 
-var express = require('express');
-var mysql = require('./dbcon.js');
-var bodyParser = require('body-parser');
+var express = require('express');												
+var mysql = require('./dbcon.js');											
+var bodyParser = require('body-parser');										
 
-var app = express();
-var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+var app = express();															
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});		
 
-app.engine('handlebars', handlebars.engine);
+app.engine('handlebars', handlebars.engine);										
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use('/static', express.static('public'));
