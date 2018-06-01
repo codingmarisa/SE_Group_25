@@ -18,7 +18,7 @@
                     <td>{{fat}}</td>
                     <td>{{protein}}</td>
                     <td><button class="btn btn-danger btn-sm" onclick="deleteitem({{item_id}})">Delete</button></td>
-                    <td><button class="btn btn-primary btn-sm" onclick="location.href='/pack/{{item_id}}'">Update</a></td>
+                    <td><button class="btn btn-primary btn-sm" onclick="location.href='/inventory/item/{{item_id}}'">Update</a></td>
                 </tr> 
                 {{/each}} 
         </table> 
@@ -28,7 +28,7 @@
                 <a data-toggle="collapse" data-parent="#addFood" href="#addFoodForm">Add Food Item &raquo;
                 </a>
                 <div id="addFoodForm" class="panel-collapse collapse">
-                    <form id="addfood" action="/pack/addFood" method="post">
+                    <form id="addfood" action="/inventory/addFood" method="post">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="foodName">

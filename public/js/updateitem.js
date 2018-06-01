@@ -1,10 +1,10 @@
 function updateitem(item_id){
     $.ajax({
-        url: '/pack/item/' + item_id,
+        url: '/inventory/item/' + item_id,
         type: 'PUT',
         data: $('#update-item').serialize(),
         success: function(result){
-            window.location.replace("/pack");
+            window.location.replace("/inventory");
         }
     })
 };
