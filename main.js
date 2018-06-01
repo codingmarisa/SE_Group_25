@@ -19,6 +19,7 @@ app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 
 app.use('/inventory', require('./inventory.js'));
+app.use('/login', require('./login.js'));
 
 app.use(function(req,res){
   res.status(404);
