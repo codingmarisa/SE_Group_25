@@ -4,19 +4,13 @@
         <table class="table table-hover table-condensed">
             <thead> 
                 <th>Name</th> 
-                <th>Weight</th> 
-                <th>Calories</th>
-                <th>Fat</th> 
-                <th>Protein</th>
+                <th>Price</th> 
             </thead>
             <tbody> 
                 {{#each food}}
                 <tr> 
                     <td>{{name}}</td> 
                     <td>{{weight}}</td> 
-                    <td>{{calories}}</td> 
-                    <td>{{fat}}</td>
-                    <td>{{protein}}</td>
                     <td><button class="btn btn-danger btn-sm" onclick="deleteitem({{item_id}})">Delete</button></td>
                     <td><button class="btn btn-primary btn-sm" onclick="location.href='/inventory/item/{{item_id}}'">Update</a></td>
                 </tr> 
@@ -34,20 +28,8 @@
                             <input type="text" class="form-control" name="foodName">
                         </div>
                         <div class="form-group">
-                            <label for="name">Weight</label>
+                            <label for="name">Price</label>
                             <input type="text" class="form-control" name="foodWeight">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Calories</label>
-                            <input type="text" class="form-control" name="calories">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Fat</label>
-                            <input type="text" class="form-control" name="fat">
-                        </div>
-                         <div class="form-group">
-                            <label for="name">Protein</label>
-                            <input type="text" class="form-control" name="protein">
                         </div>
                        <input class="btn btn-primary" type="submit" value="Submit">                                       
                     </form>
