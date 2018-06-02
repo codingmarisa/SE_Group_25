@@ -1,6 +1,6 @@
-function updateitem(item_id){
+function updateitem(it_item_id){
     $.ajax({
-        url: '/inventory/item/' + item_id,
+        url: '/inventory/item/' + it_item_id,
         type: 'PUT',
         data: $('#update-item').serialize(),
         success: function(result){

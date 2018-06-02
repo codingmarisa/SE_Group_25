@@ -25,7 +25,7 @@ module.exports = function(){
     function getItems(res, mysql, context, complete){
 
         // run a query to get all items from the database
-        mysql.pool.query("SELECT item_id, name, weight, manufactureDate, expirationDate FROM item", function(error, results, fields){
+        mysql.pool.query("SELECT it_item_id, it_name, price FROM Item", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -52,7 +52,7 @@ module.exports = function(){
     // ............................................................
     function getFood(res, mysql, context, complete){
         // run a query to get a specific food item at item_id
-        mysql.pool.query("SELECT I.item_id, I.name, I.weight, F.calories, F.fat, F.protein FROM item I INNER JOIN item_food F ON I.item_id=F.item_id", function(error, results, fields){
+        mysql.pool.query("SELECT * from Item", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -77,7 +77,7 @@ module.exports = function(){
     // ............................................................
     function getItem(res, mysql, context, id, complete){
         // run a query to get a specific item at item_id
-        var sql = "SELECT item_id, name, weight, manufactureDate, expirationDate FROM item WHERE item_id = ?";
+        var sql = "SELECT it_item_id, it_name, price FROM Item WHERE it_item_id = ?";
         var inserts = [id];
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
@@ -154,27 +154,17 @@ module.exports = function(){
     //  @param      /addFood       the URL path after ./inventory
     //  @param      function       logic to add page information
     // ............................................................
-    router.post('/addFood', function(req, res){
+    router.post('/addItem', function(req, res){
 
         // the database
         var mysql = req.app.get('mysql');
 
         // queries to the database
-        var sql = "INSERT INTO item (name, weight) VALUES (?, ?)";
-        var sql2 = "INSERT INTO item_food ( item_id, calories, fat, protein) VALUES ((SELECT MAX(item_id) FROM item), ?, ?, ?)";
-        var inserts = [req.body.foodName, req.body.foodWeight, req.body.calories, req.body.fat, req.body.protein];
-        var inserts2 = [req.body.calories, req.body.fat, req.body.protein]
+        var sql = "INSERT INTO Item (it_name, price) VALUES (?, ?)";
+        var inserts = [req.body.itemName, req.body.itemPrice];
 
         // run the queries
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-            if(error){
-                res.write(JSON.stringify(error));
-                res.end();
-            }else{
-
-            }
-        });
-        sql = mysql.pool.query(sql2,inserts2,function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -194,9 +184,9 @@ module.exports = function(){
     //  @param      function       logic to update an item
     // ............................................................
     router.put('/item/:id', function(req, res){
-        var mysql = req.app.get('mysql');                                       // the database
-        var sql = "UPDATE item SET name=?, weight=? WHERE item_id=?";           // the SQL query to be sent
-        var inserts = [req.body.name, req.body.weight, req.params.id];          // SQL information from the page
+        var mysql = req.app.get('mysql');                                         // the database
+        var sql = "UPDATE Item SET it_name=?, price=? WHERE it_item_id=?";        // the SQL query to be sent
+        var inserts = [req.body.it_name, req.body.price, req.params.id];          // SQL information from the page
 
         // run the query
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
@@ -222,7 +212,7 @@ module.exports = function(){
     // ............................................................
     router.delete('/item:id', function(req, res){
         var mysql = req.app.get('mysql');                                       // the database
-        var sql = "DELETE FROM item WHERE item_id = ?";                         // the delete query
+        var sql = "DELETE FROM Item WHERE it_item_id = ?";                      // the delete query
         var inserts = [req.params.id];                                          // item id to be injected into the query
 
         //  run the query

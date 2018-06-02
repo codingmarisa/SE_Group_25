@@ -7,29 +7,29 @@
                 <th>Price</th> 
             </thead>
             <tbody> 
-                {{#each food}}
+                {{#each item}}
                 <tr> 
-                    <td>{{name}}</td> 
-                    <td>{{weight}}</td> 
-                    <td><button class="btn btn-danger btn-sm" onclick="deleteitem({{item_id}})">Delete</button></td>
-                    <td><button class="btn btn-primary btn-sm" onclick="location.href='/inventory/item/{{item_id}}'">Update</a></td>
+                    <td>{{it_name}}</td> 
+                    <td>${{price}}</td> 
+                    <td><button class="btn btn-danger btn-sm" onclick="deleteitem({{it_item_id}})">Delete</button></td>
+                    <td><button class="btn btn-primary btn-sm" onclick="location.href='/inventory/item/{{it_item_id}}'">Update</a></td>
                 </tr> 
                 {{/each}} 
         </table> 
 
-        <div class="panel-group" id="addFood">
+        <div class="panel-group" id="addItem">
             <div class="panel">
-                <a data-toggle="collapse" data-parent="#addFood" href="#addFoodForm">Add Food Item &raquo;
+                <a data-toggle="collapse" data-parent="#addItem" href="#addItemForm">Add Item &raquo;
                 </a>
-                <div id="addFoodForm" class="panel-collapse collapse">
-                    <form id="addfood" action="/inventory/addFood" method="post">
+                <div id="addItemForm" class="panel-collapse collapse">
+                    <form id="additem" action="/inventory/addItem" method="post">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="foodName">
+                            <input type="text" class="form-control" name="itemName">
                         </div>
                         <div class="form-group">
                             <label for="name">Price</label>
-                            <input type="text" class="form-control" name="foodWeight">
+                            <input type="text" class="form-control" name="itemPrice">
                         </div>
                        <input class="btn btn-primary" type="submit" value="Submit">                                       
                     </form>
