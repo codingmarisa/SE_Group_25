@@ -1,7 +1,7 @@
-// login.js
+// createAccount.js
 //
 // Description:     This is the back-end file which controlls the logic for
-//                  getting and displaying the login page
+//                  getting and displaying the createAccount page
 // ..................................................................................
 
 module.exports = function(){
@@ -20,12 +20,10 @@ module.exports = function(){
     // ............................................................
     router.get('/', function(req, res){
         var context = {};
-        context.sub = "Login";
+        context.sub = "createAccount";
         var mysql = req.app.get('mysql');
-        res.render('login', context);
+        res.render('createAccount', context);
     });
 
     return router;
 }();
-
-

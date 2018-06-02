@@ -21,6 +21,8 @@ app.set('mysql', mysql);
 
 app.use('/inventory', require('./inventory.js'));
 app.use('/login', require('./login.js'));
+app.use('/createAccount', require('./createAccount.js'));
+
 
 app.use(function(req,res){
   res.status(404);

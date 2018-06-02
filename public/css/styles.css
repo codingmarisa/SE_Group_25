@@ -56,6 +56,17 @@ body {
 	background-color: black;
 }
 
+.title{
+	position: fixed;
+	top: 25%;
+    left: 50%;
+    margin-right: -50%;
+	transform: translate(-50%, -50%);
+	font-family: helvetica, arial;
+	font-weight: bold;
+	width: auto;
+}
+
 .center {
 	position: fixed;
 	top: 50%;

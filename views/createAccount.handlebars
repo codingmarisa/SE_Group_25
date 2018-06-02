@@ -1,7 +1,7 @@
 
 
   <div class="title" style="text-align:center">  
-	<font size="6">Farm2U Login Page</font>
+	<font size="6">Farm2U Account Creation Page</font>
   </div>
   
   <div class="center" style="text-align:center">  
@@ -15,7 +15,10 @@
 		<input type="password" maxlength="10" placeholder="Enter Password" name="psw" required>
 	  </div>
 	  
-	  
+	  <div class="container">
+		<label for="psw"><b>Confirm Password</b></label>
+		<input type="password" maxlength="10" placeholder="Enter Password" name="psw" required>
+	  </div>
 	 
 		<input type="radio" name="Choose" value="Customer" />Customer<br/>
 		<input type="radio" name="Choose" value="Farmer" />Farmer<br/>
@@ -23,11 +26,7 @@
 	 
 	  
 	  <div class="container">
-		<button type="submit">Login</button>
-	  </div>
-
-	  <div class="container">
-		<button type="button" class="cancelbtn" onclick="location.href = 'http://flip1.engr.oregonstate.edu:7732/createAccount';">Create New Account</button>
+		<button type="submit" onclick="location.href = 'http://flip1.engr.oregonstate.edu:7732/login';">Create Now</button>
 	  </div>
 	  
   </div>
