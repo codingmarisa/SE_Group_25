@@ -255,22 +255,16 @@ VALUES
       (03, 13), -- farm3, Snap Peas
       (03, 13), -- farm3, Snap Peas
       (03, 13), -- farm3, Snap Peas
-      (03, 13), -- farm3, Snap Peas
-
--- customer1
-      (04, )
-      (04, 01), -- customer1, Lettuce, farm?
-      (04, 01), -- customer1, Lettuce, farm?
-
--- customer2
-
-
-
+      (03, 13); -- farm3, Snap Peas
 UNLOCK TABLES;
 
 
 
+
+
+
 -- ORIGINAL CODE FROM TUCKER'S PROJECT
+/*
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE item (
     `item_id` int PRIMARY KEY AUTO_INCREMENT,
@@ -340,3 +334,5 @@ LOCK TABLES `item_container` WRITE;
 INSERT INTO `item_container` (`container_item_id`, `contained_item_id`)
 VALUES  (1, 4), (1, 5), (1, 6), (2, 7), (3, 1);
 UNLOCK TABLES;
+
+*/
