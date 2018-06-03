@@ -21,6 +21,7 @@ module.exports = function(){
     //  @param      context     the context to store results to
     //  @param      complete    callback function
     // ............................................................
+    // TODO: Add functionality to update account here.
     function updateAccount(res, mysql, context, complete){
 
         // run a query to update this specific user's account
