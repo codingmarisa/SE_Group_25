@@ -1,0 +1,44 @@
+{{!-- Pulled from https://getbootstrap.com/docs/3.3/components/#navbar --}}
+
+<nav class="navbar navbar-default" style="background-color:paleturquoise">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" style="background-color: #e3f2fd;" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Farm 2 U</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/createAccount">Create Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/updateAccount">Update Existing Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Manage Inventory</a>
+        </li>
+        {{!-- <li class="nav-item">
+          <a class="nav-link" href="/signup">Newsletter Signup</a>
+        </li> --}}
+        <li class="nav-item">
+          <a class="nav-link" href="">Contact Us</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+{{!-- TODO: Add inventory href to button
+Hook Up Buttons for POST on delete account
+--}}
