@@ -19,8 +19,8 @@ app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 
+app.use('/login', require('./login.js'), require('./inventory.js'));
 app.use('/inventory', require('./inventory.js'));
-app.use('/login', require('./login.js'));
 app.use('/createAccount', require('./createAccount.js'));
 app.use('/updateAccount', require('./updateAccount.js'));
 
