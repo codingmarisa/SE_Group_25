@@ -100,6 +100,7 @@ router.post('/', function(req,res){
             results = JSON.stringify(results[0].a_acct_id);          // account ID is stored in results
             console.log(results);                                    // account ID is displayed in console
             context.loginMessage = "Login Success!";
+            context.loginId = results;
             res.render('login', context);                            // render the appropriate page
         }
     });
