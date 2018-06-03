@@ -8,24 +8,6 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
-	// ............................................................
-    //
-    //  ROUTE: get (/)
-    //
-    //  descrption: a router to get information from the
-    //              database to the /updateAccount page.
-    //
-    //  @param      /               the URL path after ./updateAccount
-    //  @param      function        logic to add page information
-    // ............................................................
-    router.get('/', function(req, res){
-        var context = {};
-        context.sub = "Update Account";
-        var mysql = req.app.get('mysql');
-        res.render('updateAccount', context);
-    });
-	
-	
     // ............................................................
     //
     //  FUNCTION: updateAccount
@@ -85,6 +67,23 @@ module.exports = function(){
             complete();
         });
     }
+
+    // ............................................................
+    //
+    //  ROUTE: get (/)
+    //
+    //  descrption: a router to get information from the
+    //              database to the /updateAccount page.
+    //
+    //  @param      /               the URL path after ./updateAccount
+    //  @param      function        logic to add page information
+    // ............................................................
+    router.get('/', function(req, res){
+        var context = {};
+        context.sub = "Update Account";
+        var mysql = req.app.get('mysql');
+        res.render('updateAccount', context);
+    });
 
     return router;
 }();
