@@ -5,29 +5,26 @@
   </div>
   
   <div class="center" style="text-align:center">  
-	  <div class="container">
-		<label for="uname"><b>Username</b></label>
-		<input type="text" maxlength="10" placeholder="Enter Username" name="uname" required>
-	  </div>
+  	<form id="loginForm" action="/login" method="post">
+    	<div class="form-group">
+			<label for="username"><b>Username</b></label>
+			<input type="text" maxlength="10" placeholder="Enter Username" name="username" id="username" required>
+	    </div>
+	    
+		<div class="form-group">
+			<label for="password"><b>Password</b></label>
+			<input type="password" maxlength="10" placeholder="Enter Password" name="password" id="password" required>
+	    </div>
+	   
+		<input class="btn btn-primary" type="submit" value="Submit">                                       
+	</form>
 	  
-	   <div class="container">
-		<label for="psw"><b>Password</b></label>
-		<input type="password" maxlength="10" placeholder="Enter Password" name="psw" required>
-	  </div>
-	  
-	  
-	 
-		<input type="radio" name="Choose" value="Customer" />Customer<br/>
-		<input type="radio" name="Choose" value="Farmer" />Farmer<br/>
-		<input type="radio" name="Choose" value="Rabbit" />Rabbit<br/>
-	 
-	  
-	  <div class="container">
-		<button type="submit">Login</button>
-	  </div>
+	<div class="container">
+		<input class="btn btn-primary" type="button" onclick="location.href = '/createAccount';" value="Create New Account">  
+	</div>
 
-	  <div class="container">
-		<button type="button" class="cancelbtn" onclick="location.href = 'http://flip1.engr.oregonstate.edu:7732/createAccount';">Create New Account</button>
-	  </div>
-	  
+	<div class="container">
+		<p>{{loginMessage}}</p>
+	</div>
+	
   </div>

@@ -24,6 +24,7 @@ app.use('/inventory', require('./inventory.js'));
 app.use('/createAccount', require('./createAccount.js'));
 app.use('/updateAccount', require('./updateAccount.js'));
 
+
 app.use(function(req,res){
   res.status(404);
   res.render('404');
