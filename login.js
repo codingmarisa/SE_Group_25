@@ -7,10 +7,9 @@
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
+    var app = express();
 
-/////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
+// generate a context to use on client-side
 function genContext(type, request){
   var qParams = [];   //  holds query string data
   var bParams = [];   //  holds data from the body in the case of a POST
@@ -94,12 +93,14 @@ router.post('/', function(req,res){
             res.end();
         }else if (results[0] == undefined){                          // if the query returns undefined
             console.log("failed to authenticate!");                  // a user account was not found; report in console
+            context.loginMessage = "Failed to Authenticate!";
             res.render('login', context);                            // re-render the login page
         }else{                                                       // if the query returns a valid login...
             console.log("login success!");                           // report success in console
             results = JSON.stringify(results[0].a_acct_id);          // account ID is stored in results
             console.log(results);                                    // account ID is displayed in console
-            res.render('./inventory', context);                      // render the appropriate page
+            context.loginMessage = "Login Success!";
+            res.render('login', context);                            // render the appropriate page
         }
     });
 });
