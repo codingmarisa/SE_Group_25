@@ -41,10 +41,10 @@ module.exports = function(){
 
     // ............................................................
     //
-    //  FUNCTION: deleteAccount
+    //  FUNCTION: delete
     //
     //  descrption: deletes account of currently logged in
-    //              user by ID returning a success message or 
+    //              user by username returning a success message or 
     //              error message.
     //
     //  @param      res         the results of the query
@@ -52,21 +52,25 @@ module.exports = function(){
     //  @param      context     the context to store results to
     //  @param      complete    callback function
     // ............................................................
-    function deleteAccount(res, mysql, context, complete){
+	router.post('/delete', function(req, res){
 
-        // run a query to update this specific user's account
-        mysql.pool.query("DELETE FROM account" +
-        "WHERE a_acct_id=[currentUserID]", function(error, results, fields){
-            if(error){
-                res.write(JSON.stringify(error));
-                res.end();
-            }
+		// the database
+		var mysql = req.app.get('mysql');
 
-            // add the results to item
-            context.item = results;
-            complete();
-        });
-    }
+		// queries to the database
+		var sql = "DELETE FROM Account WHERE username = ?";
+		var inserts = [req.body.unameDelete];
+
+		// run the queries
+		sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}else{
+				res.redirect('/createAccount'); // refresh the page
+			}
+		});
+    });	
 
     // ............................................................
     //
