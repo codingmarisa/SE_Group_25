@@ -27,34 +27,39 @@ DROP TABLE IF EXISTS `Item`;
 CREATE TABLE `Item` (
     `it_item_id` int PRIMARY KEY AUTO_INCREMENT,
     `it_name` varchar(255) NOT NULL,
-    `price` int(11) NOT NULL
+    `price` float(10, 2) NOT NULL,  -- this is a signed number
+                                    -- with up to 10 numbers on left of decimal
+                                    -- only 2 numbers on right of decimal
+    `isOrganic` boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `Item` WRITE;
-INSERT INTO `Item` (`it_name`, `price`)
-VALUES  ("Lettuce", 1.50), -- it_item_id = 01
-        ("Tomato", 2.00), -- it_item_id = 02
-        ("Zucchini", 2.50), -- it_item_id = 03
-        ("Spinach", 3.00), -- it_item_id = 04
-        ("Cauliflower", 3.50), -- it_item_id = 05
-        ("Cabbage", 4.00), -- it_item_id = 06
-        ("Garlic", 4.50), -- it_item_id = 07
-        ("Broccoli", 5.00), -- it_item_id = 08
-        ("Basil", 5.50), -- it_item_id = 09
-        ("Strawberries", 6.00), -- it_item_id = 10
-        ("Peaches", 6.50), -- it_item_id = 11
-        ("Blueberries", 7.00), -- it_item_id = 12
-        ("Snap Peas", 7.50), -- it_item_id = 13
-        ("Watermelon", 8.00); -- it_item_id = 14
+INSERT INTO `Item` (`it_name`, `price`, `isOrganic`)
+VALUES  ("Lettuce", 1.50, 0), -- it_item_id = 01
+        ("Tomato", 2.00, 0), -- it_item_id = 02
+        ("Zucchini", 2.50, 0), -- it_item_id = 03
+        ("Spinach", 3.00, 0), -- it_item_id = 04
+        ("Cauliflower", 3.50, 0), -- it_item_id = 05
+        ("Cabbage", 4.00, 0), -- it_item_id = 06
+        ("Garlic", 4.50, 1), -- it_item_id = 07
+        ("Broccoli", 5.00, 1), -- it_item_id = 08
+        ("Basil", 5.50, 1), -- it_item_id = 09
+        ("Strawberries", 6.00, 1), -- it_item_id = 10
+        ("Peaches", 6.50, 1), -- it_item_id = 11
+        ("Blueberries", 7.00, 1), -- it_item_id = 12
+        ("Snap Peas", 7.50, 1), -- it_item_id = 13
+        ("Watermelon", 8.00, 1); -- it_item_id = 14
 UNLOCK TABLES;
 
 
 DROP TABLE IF EXISTS `Inventory`;
 CREATE TABLE `Inventory` (
-    `inv_id` int PRIMARY KEY AUTO_INCREMENT,  
+    `inv_id` int PRIMARY KEY AUTO_INCREMENT,
     `inv_acct_id` int(11) NOT NULL,
     `inv_item_id` int(11) NOT NULL,
-    `quantity` int(11) NOT NULL
+    `quantity` int(11) NOT NULL,
+    FOREIGN KEY (`inv_acct_id`) REFERENCES `Account` (`a_acct_id`) ON DELETE CASCADE,
+    FOREIGN KEY (`inv_item_id`) REFERENCES `Item` (`it_item_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `Inventory` WRITE;
