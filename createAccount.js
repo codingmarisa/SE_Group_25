@@ -25,5 +25,44 @@ module.exports = function(){
         res.render('createAccount', context);
     });
 
+	
+    // ............................................................
+    //
+    //  ROUTE: post (/addUser)
+    //
+    //  descrption: adds a user and redirects to the inventory
+    //              page after adding
+    //
+    //  @param      /addUser       the URL path after ./createAccount
+    //  @param      function       logic to add page information
+    // ............................................................
+    router.post('/addUser', function(req, res){
+
+        // the database
+        var mysql = req.app.get('mysql');
+
+        // queries to the database
+        var sql = "INSERT INTO Account (username, password, acct_type) VALUES (?, ?, ?)";
+        var inserts = [req.body.uname, req.body.psw, req.body.Choose];
+
+        // run the queries
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/login'); // refresh the page
+            }
+        });
+    });	
+	
+	
+	
+	
+	
+	
+	
+	
+	
     return router;
 }();
