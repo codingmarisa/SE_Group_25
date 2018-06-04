@@ -34,13 +34,9 @@
 		<input class="btn btn-primary" type="submit" value="Update Account Information">
 	  </div>
 
-	  <form id="delete" action="updateAccount/delete" method="post">
-	  <div class="container">
-		<label for="unameDelete"><b>Username</b></label>
-		<input type="text" maxlength="10" placeholder="Enter Username" name="unameDelete" required>
-	  </div>
+	  <form id="delete" action="{{loginId}}/delete" method="post">
 		  <div class="container">
-			<input class="btn btn-primary" type="submit" value="Delete Account">
+			<input class="btn btn-danger" type="submit" value="Delete Account">
 		  </div>
 	  </form>
 	  
