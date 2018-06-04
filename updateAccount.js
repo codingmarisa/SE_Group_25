@@ -25,7 +25,7 @@ module.exports = function(){
     function updateAccount(res, mysql, context, complete){
 
         // run a query to update this specific user's account
-        mysql.pool.query("UPDATE account SET username=[username_input]," + 
+        mysql.pool.query("UPDATE Account SET username=[username_input]," + 
         "password=[passwordInput], acct_type=[accountTypeInput] " +
         "WHERE a_acct_id=[currentUserID]", function(error, results, fields){
             if(error){
@@ -52,14 +52,19 @@ module.exports = function(){
     //  @param      context     the context to store results to
     //  @param      complete    callback function
     // ............................................................
-	router.post('/delete', function(req, res){
+	router.post('/:loginId/delete', function(req, res){
 
 		// the database
 		var mysql = req.app.get('mysql');
 
 		// queries to the database
-		var sql = "DELETE FROM Account WHERE username = ?";
-		var inserts = [req.body.unameDelete];
+		var sql = "DELETE FROM Account WHERE a_acct_id = ?";
+		var inserts = req.params.loginId;
+
+        // trace statements
+        console.log("LOGINID");
+        console.log(inserts);
+        console.log("RUNNING QUERY");
 
 		// run the queries
 		sql = mysql.pool.query(sql,inserts,function(error, results, fields){
@@ -67,14 +72,14 @@ module.exports = function(){
 				res.write(JSON.stringify(error));
 				res.end();
 			}else{
-				res.redirect('/createAccount'); // refresh the page
+				res.redirect('/login'); // go to login page
 			}
 		});
     });	
 
     // ............................................................
     //
-    //  ROUTE: get (/)
+    //  ROUTE: get (/:loginId)
     //
     //  descrption: a router to get information from the
     //              database to the /updateAccount page.
@@ -82,8 +87,9 @@ module.exports = function(){
     //  @param      /               the URL path after ./updateAccount
     //  @param      function        logic to add page information
     // ............................................................
-    router.get('/', function(req, res){
+    router.get('/:loginId', function(req, res){
         var context = {};
+        context.loginId = req.params.loginId;
         context.sub = "Update Account";
         var mysql = req.app.get('mysql');
         res.render('updateAccount', context);
