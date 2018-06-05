@@ -10,7 +10,7 @@ module.exports = function(){
 
     // ............................................................
     //
-    //  FUNCTION: updateAccount
+    //  FUNCTION: update
     //
     //  descrption: updates Account Info of currently logged in
     //              user by ID returning a success message or 
@@ -21,11 +21,9 @@ module.exports = function(){
     //  @param      context     the context to store results to
     //  @param      complete    callback function
     // ............................................................
-    // TODO: Add functionality to update account here.
-    //function updateAccount(res, mysql, context, complete){
-	router.post('/:loginId/update', function(req, res){		//marisa
+	router.post('/:loginId/update', function(req, res){
 
-		// the database										//marisa
+		// the database									
 		var mysql = req.app.get('mysql');
 		
 		// queries to the database
@@ -41,8 +39,7 @@ module.exports = function(){
 				res.redirect('/login'); // go to login page
 			}
 		});
-	}); //marisa
-    //}
+	});
 
     // ............................................................
     //
