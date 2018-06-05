@@ -22,22 +22,27 @@ module.exports = function(){
     //  @param      complete    callback function
     // ............................................................
     // TODO: Add functionality to update account here.
-    function updateAccount(res, mysql, context, complete){
+    //function updateAccount(res, mysql, context, complete){
+	router.post('/:loginId/update', function(req, res){		//marisa
 
-        // run a query to update this specific user's account
-        mysql.pool.query("UPDATE Account SET username=[username_input]," + 
-        "password=[passwordInput], acct_type=[accountTypeInput] " +
-        "WHERE a_acct_id=[currentUserID]", function(error, results, fields){
-            if(error){
-                res.write(JSON.stringify(error));
-                res.end();
-            }
-
-            // add the results to item
-            context.item = results;
-            complete();
-        });
-    }
+		// the database										//marisa
+		var mysql = req.app.get('mysql');
+		
+		// queries to the database
+		var sql = "UPDATE Account SET username = ?, password = ?, acct_type = ? WHERE a_acct_id = ?";
+		var inserts = [req.body.uname, req.body.psw, req.body.Choose, req.params.loginId];
+		
+        // run the queries
+		sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}else{
+				res.redirect('/login'); // go to login page
+			}
+		});
+	}); //marisa
+    //}
 
     // ............................................................
     //
@@ -97,10 +102,4 @@ module.exports = function(){
 
     return router;
 }();
-
-// SQL to update account info
-// UPDATE account SET username=[username_input], 
-//     password=[passwordInput], acct_type=[accountTypeInput] 
-//     WHERE a_acct_id=[currentUserID]
-
 
