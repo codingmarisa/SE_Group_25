@@ -1,0 +1,30 @@
+
+ 
+  <div class="title" style="text-align:center">  
+	<font size="6">Farm2U Login Page</font>
+  </div>
+  
+  <div class="center" style="text-align:center">  
+  	<form id="loginForm" action="/login" method="post">
+    	<div class="form-group">
+			<label for="username"><b>Username</b></label>
+			<input type="text" maxlength="10" placeholder="Enter Username" name="username" id="username" required>
+	    </div>
+	    
+		<div class="form-group">
+			<label for="password"><b>Password</b></label>
+			<input type="password" maxlength="10" placeholder="Enter Password" name="password" id="password" required>
+	    </div>
+	   
+		<input class="btn btn-primary" type="submit" value="Submit">                                       
+	</form>
+	  
+	<div class="container">
+		<input class="btn btn-primary" type="button" onclick="location.href = '/createAccount';" value="Create New Account">  
+	</div>
+
+	<div class="container">
+		<p>{{loginMessage}}</p>
+	</div>
+	
+  </div>
