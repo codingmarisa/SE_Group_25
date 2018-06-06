@@ -4,8 +4,15 @@
 	<font size="6">Farm2U Account Creation Page</font>
   </div>
   
-  <form id="addUser" action="createAccount/addUser" method="post">
-  <div class="center" style="text-align:center">  
+  
+  
+  <form id="addUser" action="/createAccount" method="post">
+	  <div class="center" style="text-align:center">  
+	  
+	  <div class="container">
+		<p>{{PasswordConfirmMessage}}</p>
+	  </div>
+	  
 	  <div class="container">
 		<label for="uname"><b>Username</b></label>
 		<input type="text" maxlength="10" placeholder="Enter Username" name="uname" required>
@@ -13,7 +20,12 @@
 	  
 	   <div class="container">
 		<label for="psw"><b>Password</b></label>
-		<input type="password" maxlength="10" placeholder="Enter Password" name="psw" required>
+		<input type="password" id="PasswordInput" maxlength="10" placeholder="Enter Password" name="psw" required>
+	  </div>
+	  
+	   <div class="container">
+		<label for="psw"><b>Confirm Password</b></label>
+		<input type="password" id="PasswordInputConfirm" maxlength="10" placeholder="Enter Password" name="psw2" required>
 	  </div>
 	 
 		<input type="radio" name="Choose" value="Customer" />Customer<br/>
@@ -24,6 +36,10 @@
 	  <div class="container">
 		<input class="btn btn-primary" type="submit" value="Create Now"> 
 	  </div>
-	  </form>
+	  
+	  
+   </form>
+   
+     
 	  
   </div>
