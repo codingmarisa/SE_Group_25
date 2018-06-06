@@ -1,15 +1,17 @@
 <div class="container">
     <h1>Inventory</h1>
-
+        <input class="form-control" id="myInput" type="text" placeholder="Search Inventory...">
         <table class="table table-hover table-condensed">
             <thead> 
-                <th>Name</th> 
+                <th>Name</th>
+                <th>Quantity</th>
                 <th>Price</th> 
             </thead>
-            <tbody> 
+            <tbody id="myTable"> 
                 {{#each item}}
                 <tr> 
-                    <td>{{it_name}}</td> 
+                    <td>{{it_name}}</td>
+                    <td>{{quantity}}</td> 
                     <td>${{price}}</td> 
                     <td><button class="btn btn-danger btn-sm" onclick="deleteitem({{it_item_id}})">Delete</button></td>
                     <td><button class="btn btn-primary btn-sm" onclick="location.href='/inventory/item/{{it_item_id}}'">Update</a></td>
@@ -42,3 +44,15 @@
 
     </div>
 </div>
+
+<!-- Borrowed from: https://www.w3schools.com/bootstrap/bootstrap_filters.asp -->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

@@ -39,29 +39,33 @@ module.exports = function(){
 
     // ............................................................
     //
-    //  FUNCTION: getFood
+    //  FUNCTION: getUserItems
     //
-    //  descrption: gets information about a food item from the 
-    //              database (food is a subset of items). This
-    //              returns a SINGLE food
+    //  descrption: gets information about an item from the
+    //              database. Returns a SINGLE item
     //
     //  @param      res         the results of the getFood query
     //  @param      mysql       the mysql database
     //  @param      context     the context to store results to
     //  @param      complete    callback function
     // ............................................................
-    function getFood(res, mysql, context, complete){
-        // run a query to get a specific food item at item_id
-        mysql.pool.query("SELECT * from Item", function(error, results, fields){
+    function getUserItems(res, mysql, context, complete){
+        // run a query to get a specific item at item_id
+        console.log("LOGINID");
+        console.log(context.loginId);
+        var sql = "SELECT It.it_name, I.quantity, It.price FROM Account A INNER JOIN Inventory I ON A.a_acct_id=I.inv_acct_id INNER JOIN Item It ON I.inv_item_id=It.it_item_id WHERE a_acct_id= ?";
+        var inserts = [context.loginId];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            // add the results to food
-            context.food = results;
+            // add the results to item
+            context.item = results;
+            console.log(context.item);
             complete();
         });
-    }    
+    }  
 
     // ............................................................
     //
@@ -108,11 +112,39 @@ module.exports = function(){
         context.sub = "Inventory";                                      // the page subtitle
         context.jsscripts = ["js/deleteitem.js", "js/removeitem.js"];   // javascript to be injected into the page
         var mysql = req.app.get('mysql');                               // the database
-        getFood(res, mysql, context, complete);                         // callback = 1
-        getItems(res, mysql, context, complete);                        // callback = 2
+        getItems(res, mysql, context, complete);                        // callback = 1
+        function complete(){                                            // wait until getItems() is complete before rendering
+            callbackCount++;
+            if(callbackCount >= 1){
+                res.render('inventory', context);                       // render the inventory page
+            }
+
+        }
+    });
+
+    // ............................................................
+    //
+    //  ROUTE: get (/:uid)
+    //
+    //  descrption: a router to get information from the
+    //              database to the /inventory page for a specific
+    //              user.
+    //
+    //  @param      /:uid           the URL path after ./inventory
+    //  @param      function        logic to add page information
+    // ............................................................
+    router.get('/:loginId', function(req, res){
+
+        var callbackCount = 0;                                          // tracks the number of functions that need to be complete before rendering the page
+        var context = {};                                               // information to be injected into the page
+        context.sub = "Inventory";                                      // the page subtitle
+        context.loginId = req.params.loginId;
+        context.jsscripts = ["js/deleteitem.js", "js/removeitem.js"];   // javascript to be injected into the page
+        var mysql = req.app.get('mysql');                               // the database
+        getUserItems(res, mysql, context, complete);                    // callback = 1
         function complete(){                                            // wait until getFood() and getItems() are complete before rendering
             callbackCount++;
-            if(callbackCount >= 2){
+            if(callbackCount >= 1){
                 res.render('inventory', context);                       // render the inventory page
             }
 
