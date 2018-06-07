@@ -6,7 +6,11 @@
 
 var express = require('express');												
 var mysql = require('./dbcon.js');											
-var bodyParser = require('body-parser');										
+var bodyParser = require('body-parser');
+// nodemailer is required in the module.exports function
+// on the contact.js form, defining it here means it is out of scope
+// on that js file
+										
 
 var app = express();															
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});		
@@ -23,6 +27,7 @@ app.use('/login', require('./login.js'), require('./inventory.js'));
 app.use('/inventory', require('./inventory.js'));
 app.use('/createAccount', require('./createAccount.js'));
 app.use('/updateAccount', require('./updateAccount.js'));
+app.use('/contact', require('./contact.js'));
 
 
 app.use(function(req,res){

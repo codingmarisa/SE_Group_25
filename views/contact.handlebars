@@ -1,0 +1,31 @@
+<br>
+<div class="container-fluid">
+  <h2>{{message}}</h2>
+  <form id="contact-form" method="POST" action="/contact">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="contactFirstName">First name</label>
+        <input type="text" class="form-control" name="contactFirstName" placeholder="First name" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="contactLastName">Last name</label>
+        <input type="text" class="form-control" name="contactLastName" placeholder="Last name" value="" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="contactEmail">Email</label>
+        <input type="email" class="form-control" name="contactEmail" placeholder="contact@example.com" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-7 mb-3">
+        <label for="contactMessage">What you wanted to tell us</label>
+        <textarea class="form-control" name="contactMessage" placeholder="Enter text into the scrollbox." style="height: 80px;" required></textarea>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </form>
+</div>
+  
