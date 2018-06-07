@@ -1,6 +1,6 @@
-function deleteitem(id){
+function deleteitem(aid, iid){
     $.ajax({
-        url: '/inventory/item' + id,
+        url: '/inventory/deleteitem/' + aid + '/' + iid,
         type: 'DELETE',
         success: function(result){
             window.location.reload(true);
