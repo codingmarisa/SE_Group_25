@@ -1,6 +1,6 @@
 <div class="container">
 	<h1>Update {{item.it_name}}:</h1>
-	<form id="update-item" action="/inventory" method="post">
+	<form id="update-item" action="/inventory/{{loginId}}" method="post">
 		<div class="form-group">
 			<label for="it_name">Name</label>
 			<input type="text" class="form-control" id="it_name" name="it_name" value="{{item.it_name}}">
@@ -10,5 +10,5 @@
 			<input type="text" class="form-control" id="price" name="price" value="{{item.price}}">
 		</div>
 	</form>
-	<button class="btn btn-primary btn-sm" onclick="updateitem({{item.it_item_id}})">Update</button>
+	<button class="btn btn-primary btn-sm" onclick="updateitem({{loginId}}, {{item.it_item_id}})">Update</button>
 </div>

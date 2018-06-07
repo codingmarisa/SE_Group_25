@@ -12,9 +12,9 @@
                 <tr> 
                     <td>{{it_name}}</td>
                     <td>{{quantity}}</td> 
-                    <td>${{price}}</td> 
-                    <td><button class="btn btn-danger btn-sm" onclick="deleteitem({{it_item_id}})">Delete</button></td>
-                    <td><button class="btn btn-primary btn-sm" onclick="location.href='/inventory/item/{{it_item_id}}'">Update</a></td>
+                    <td>${{price}}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="deleteitem({{../loginId}}, {{it_item_id}})">Delete</button></td>
+                    <td><button class="btn btn-primary btn-sm" onclick="location.href='/inventory/item/{{../loginId}}/{{it_item_id}}'">Update</a></td>
                 </tr> 
                 {{/each}} 
         </table> 
@@ -24,13 +24,18 @@
                 <a data-toggle="collapse" data-parent="#addItem" href="#addItemForm">Add Item &raquo;
                 </a>
                 <div id="addItemForm" class="panel-collapse collapse">
-                    <form id="additem" action="/inventory/addItem" method="post">
+                    <form id="additem" action="/inventory/{{loginId}}" method="post">
                         
 						<div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="itemName">
                         </div>
                         
+                        <div class="form-group">
+                            <label for="name">Quantity</label>
+                            <input type="text" class="form-control" name="itemQuantity">
+                        </div>
+
 						<div class="form-group">
                             <label for="name">Price</label>
                             <input type="text" class="form-control" name="itemPrice">

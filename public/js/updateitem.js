@@ -1,10 +1,10 @@
-function updateitem(it_item_id){
+function updateitem(loginId, it_item_id){
     $.ajax({
-        url: '/inventory/item/' + it_item_id,
+        url: '/inventory/item/' + loginId + '/' + it_item_id,
         type: 'PUT',
         data: $('#update-item').serialize(),
         success: function(result){
-            window.location.replace("/inventory");
+            window.location.replace('/inventory/' + loginId);
         }
     })
 };
