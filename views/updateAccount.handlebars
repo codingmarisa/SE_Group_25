@@ -1,35 +1,41 @@
+<div class="background">
 
+	<div class="wrapper">
 
-  <div class="title" style="text-align:center">  
-	<font size="6">Farm2U Update Account Page</font>
-  </div>
-  
-  <form id="update" action="{{loginId}}/update" method="post">
-  <div class="center" style="text-align:center">  
-	  <div class="container">
-		<label for="uname"><b>New Username</b></label>
-		<input type="text" maxlength="10" placeholder="Enter Username" name="uname" required>
-	  </div>
-	  
-	   <div class="container">
-		<label for="psw"><b>New Password</b></label>
-		<input type="password" maxlength="10" placeholder="Enter Password" name="psw" required>
-	  </div>
-	  
-	  <p><b>Desired Account Type</b></p>
-	  <input type="radio" name="Choose" value="Customer" />Customer<br/>
-	  <input type="radio" name="Choose" value="Farmer" />Farmer<br/>
-	  <input type="radio" name="Choose" value="Rabbit" />Rabbit<br/>
-	 
-		<div class="container">
-			<input class="btn btn-primary" type="submit" value="Update Account Information">
-		</div>
-	  </form>
-
-	  <form id="delete" action="{{loginId}}/delete" method="post">
-		  <div class="container">
-			<input class="btn btn-danger" type="submit" value="Delete Account">
+		  <div class="title" style="text-align:center">  
+			<font size="6">Farm2U Update Account Page</font>
 		  </div>
-	  </form>
-	  
-  </div>
+		  
+		  <form id="update" action="{{loginId}}/update" method="post">
+		  <div class="center" style="text-align:center">  
+			  <div class="center">
+				<label for="uname"><b>New Username</b></label>
+				<input type="text" maxlength="10" placeholder="Enter Username" name="uname" required>
+			  </div>
+			  
+			   <div class="center">
+				<label for="psw"><b>New Password</b></label>
+				<input type="password" maxlength="10" placeholder="Enter Password" name="psw" required>
+			  </div>
+			  
+			  <div class="center"><b>Desired Account Type</b></div>
+			  <input type="radio" name="Choose" value="Customer" />Customer<br/>
+			  <input type="radio" name="Choose" value="Farmer" />Farmer<br/>
+			  <input type="radio" name="Choose" value="Rabbit" />Rabbit<br/>
+			 
+				<div class="center">
+					<input class="btn btn-primary" type="submit" value="Update Account Information">
+				</div>
+			  </form>
+
+			  <form id="delete" action="{{loginId}}/delete" method="post">
+				  <div class="center">
+					<input class="btn btn-danger" type="submit" value="Delete Account">
+				  </div>
+			  </form>
+			  
+		  </div>
+  
+	</div>
+  
+</div>  
