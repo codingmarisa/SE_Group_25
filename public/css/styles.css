@@ -57,17 +57,32 @@ body {
 }
 
 .title{
-	position: fixed;
-	top: 25%;
-    left: 50%;
-    margin-right: -50%;
-	transform: translate(-50%, -50%);
+	position: relative;
+	text-align: center;
+	top: 0%;
+    //left: 82%;
+	
+    //margin-right: -50%;
+	//transform: translate(-50%, -50%);
 	font-family: helvetica, arial;
 	font-weight: bold;
-	width: auto;
+	//width: auto;
 }
 
+.navbar-default { margin-bottom: 0px; }
+
 .center {
+	position: relative;
+	//top: 50%;
+    //left: 50%;
+    //margin-right: -50%;
+	//transform: translate(-50%, -50%);
+	font-family: helvetica, arial;
+	font-weight: bold;
+	//width: auto;
+}
+
+.altcenter {
 	position: fixed;
 	top: 50%;
     left: 50%;
@@ -76,4 +91,39 @@ body {
 	font-family: helvetica, arial;
 	font-weight: bold;
 	width: auto;
+}
+
+.wrapper {
+    position:fixed; /* make this relative to have the inner div absolute without breaking out */
+    width: 30%;/* fix the width or else it'll be the entire page's width */
+    height: 55%;
+	top: 25%;
+    left: 36%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background: #87CEEB; 
+    border: 3px solid grey;
+	border-radius: 25px;
+	padding: 10px; 
+}
+
+.altwrapper{
+	display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;   
+    flex-wrap: wrap;
+}
+
+.background{
+	width: 100%;
+	height:100%;
+	left: 0;
+	top: 0; 
+	position: relative;
+
+	background-image: url(/static/images/farm.jpg); /* courtesy of: http://www.ndnnews.com/the-21st-century-farm/*/
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: black;
 }
